@@ -44,4 +44,14 @@ txt2 = f"My name is John, I am {age}"
 print(txt)
 
 
-txt3 = "We are the so-called \"Vikings\" from the north."
+txt3 = "We are the so-called \"Vikings\" from the north." 
+
+# \'	Single Quote	
+#\\	Backslash	
+#\n	New Line	
+#\r	Carriage Return	
+#\t	Tab	
+#\b	Backspace	
+#\f	Form Feed	
+#\ooo	Octal value	
+#\xhh	Hex value
