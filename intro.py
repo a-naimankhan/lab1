@@ -1,0 +1,1 @@
+print("Hello world") #it prints Hello world:d
