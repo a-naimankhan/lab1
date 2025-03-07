@@ -1,0 +1,1 @@
+this is lab6\new_directory1\U.txt
