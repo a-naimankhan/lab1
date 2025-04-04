@@ -104,18 +104,10 @@ class Coin(pygame.sprite.Sprite):
         if self.rect.bottom > height:
             self.reset()
 
-    def reset(self):
-    while True:
-        new_x = random.randint(30, 370)
-        new_y = random.randint(50, 400)
-        self.rect.center = (new_x, new_y)
-
-        # Проверка на пересечение с игроком
-        if not self.rect.colliderect(P1.rect):
-            break
-
-
     
+
+    def reset(self):
+        self.rect.center = (random.randint(30 , 370) , random.randint(50 , 400))
 
     def draw(self , surface):
         surface.blit(self.image , self.rect)
