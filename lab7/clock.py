@@ -41,6 +41,7 @@ while running:
     #print(f"sec angle = {sec_angle}")
     #print(f"min angle = {min_angle}")
     
+    #меняющиеся руки 
     rotated_sec_hand , rotated_sec_rect = rotate_hand(sec_hand , sec_angle , CENTER )
     rotated_min_hand , rotated_min_rect = rotate_hand(min_hand , min_angle , CENTER )
 

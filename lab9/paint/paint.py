@@ -73,7 +73,24 @@ def set_rect_mode():
 
 def set_brusher_mode():
     global mode
-    mode = 'brusher'
+    mode = 'brush'
+
+def set_square_mode():
+    global mode
+    mode = 'square'
+
+def set_triangle_mode():
+    global mode
+    mode = 'triangle'
+
+def set_equalinter_mode():
+    global mode
+    mode = 'equalinter'
+
+def set_rhombus_mode():
+    global mode
+    mode = 'rhombus'
+
 
     
 def eraser():
@@ -112,11 +129,23 @@ buttons = [
 clear_screen()
 while True:
     for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_s:
+                set_square_mode()
+            elif event.key == pygame.K_t:
+                set_triangle_mode()
+            elif event.key == pygame.K_e:
+                set_equalinter_mode()
+            elif event.key == pygame.K_r:
+                set_rhombus_mode()
+            elif event.key == pygame.K_b:
+                set_brusher_mode()
+
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if mode in ['circle' , 'rect' , 'brush']:
+            if mode in ['circle' , 'rect' , 'brush' , 'square' , 'triangle' , 'equalinter' , 'rhombus']:
                 circle_start = event.pos
             drawing = True
         elif event.type == pygame.MOUSEBUTTONUP:
@@ -133,9 +162,47 @@ while True:
                 h = abs(end[1] - circle_start[1])
                 pygame.draw.rect(screen , brush_color , (x , y , w , h) ,2)
                 circle_start = None
-            elif event.type == pygame.MOUSEMOTION and drawing and mode == 'brush':
-                mouse_x , mouse_y = event.pos
-                pygame.draw.circle(screen , brush_color , (mouse_x , mouse_y) , 5)
+            elif mode == 'square' and circle_start:
+                end = event.pos
+                size = max(abs(end[0] - circle_start[0]), abs(end[1] - circle_start[1]))
+                x = circle_start[0]
+                y = circle_start[1]
+                pygame.draw.rect(screen, brush_color, (x, y, size, size), 2)
+                circle_start = None
+
+            elif mode == 'triangle' and circle_start:
+                end = event.pos
+                x1, y1 = circle_start
+                x2, y2 = end
+                points = [(x1, y2), (x2, y2), (x1, y1)]
+                pygame.draw.polygon(screen, brush_color, points, 2)
+                circle_start = None
+
+            elif mode == 'equalinter' and circle_start:
+                end = event.pos
+                x1, y1 = circle_start
+                x2, y2 = end
+                side = max(abs(x2 - x1), abs(y2 - y1))
+                height = int((3 ** 0.5 / 2) * side)
+                top = (x1 + side // 2, y1)
+                left = (x1, y1 + height)
+                right = (x1 + side, y1 + height)
+                pygame.draw.polygon(screen, brush_color, [top, left, right], 2)
+                circle_start = None
+
+            elif mode == 'rhombus' and circle_start:
+                end = event.pos
+                x1, y1 = circle_start
+                x2, y2 = end
+                cx = (x1 + x2) // 2
+                cy = (y1 + y2) // 2
+                dx = abs(x2 - x1) // 2
+                dy = abs(y2 - y1) // 2
+                points = [(cx, y1), (x2, cy), (cx, y2), (x1, cy)]
+                pygame.draw.polygon(screen, brush_color, points, 2)
+                circle_start = None
+
+            
                 
             if event.button == 1:
                 drawing  = False
