@@ -37,7 +37,7 @@ while running:
     #print(f"second: {second}")
     #print(f"min: {minute}")
     sec_angle = second * 6
-    min_angle = minute * 6 +(second/60) * 6
+    min_angle = (min * 6)/ 60
     #print(f"sec angle = {sec_angle}")
     #print(f"min angle = {min_angle}")
     

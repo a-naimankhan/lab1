@@ -23,7 +23,7 @@ def play_pause():
         pygame.mixer.music.unpause()
 
 def stop():
-    pygame.mixer.music.stop
+    pygame.mixer.music.stop()
 
 def restart():
     pygame.mixer.music.stop()

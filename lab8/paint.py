@@ -73,7 +73,7 @@ def set_rect_mode():
 
 def set_brusher_mode():
     global mode
-    mode = 'brusher'
+    mode = 'brush'
 
     
 def eraser():
@@ -89,23 +89,23 @@ def exit_app():
 buttons = [
     Button(10 , 10 , 60 , 30 , 'Black' , black , set_black),
     
-    Button(80 , 10 , 60 , 30 , 'Green' , green , set_green),
+    Button(70 , 10 , 60 , 30 , 'Green' , green , set_green),
     
-    Button(159 , 10 , 60 , 30 , 'Red' , red , set_red),
+    Button(140 , 10 , 60 , 30 , 'Red' , red , set_red),
     
-    Button(220 , 10 , 60 , 30 , 'Blue' , blue , set_blue),
+    Button(210 , 10 , 60 , 30 , 'Blue' , blue , set_blue),
 
-    Button(290 , 10 , 60 , 30 , 'Eraser' , gray , eraser),
+    Button(280 , 10 , 60 , 30 , 'Eraser' , gray , eraser),
 
-    Button(370 , 10 , 60 , 30 , 'Clear' , gray , clear_screen) , 
+    Button(360 , 10 , 60 , 30 , 'Clear' , gray , clear_screen) , 
     
-    Button(460 , 10 , 60 , 30 , 'Exit' , gray , exit_app) ,
+    Button(420 , 10 , 60 , 30 , 'Exit' , gray , exit_app) ,
     
-    Button(550 , 10 , 60 , 30 , 'Circle' , gray , set_circle_mode) ,
+    Button(480 , 10 , 60 , 30 , 'Circle' , gray , set_circle_mode) ,
 
-    Button(620 , 10 , 60 , 30 , 'Rectangle' , gray , set_rect_mode) , 
+    Button(560, 10 , 60 , 30 , 'Rectangle' , gray , set_rect_mode) , 
     
-    Button(680 , 40 , 60  ,30 , 'Brusher' , gray , set_brusher_mode) 
+    Button(670 ,10   , 60  ,30 , 'Brusher' , gray , set_brusher_mode) 
 
 ]
 
@@ -133,9 +133,7 @@ while True:
                 h = abs(end[1] - circle_start[1])
                 pygame.draw.rect(screen , brush_color , (x , y , w , h) ,2)
                 circle_start = None
-            elif event.type == pygame.MOUSEMOTION and drawing and mode == 'brush':
-                mouse_x , mouse_y = event.pos
-                pygame.draw.circle(screen , brush_color , (mouse_x , mouse_y) , 5)
+            
                 
             if event.button == 1:
                 drawing  = False
