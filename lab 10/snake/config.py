@@ -1,0 +1,5 @@
+DB_name = "lab 10"
+DB_user = "postgres"
+DB_password = "Superpasswordforsql"
+DB_host = "Localhost"
+DB_port = "5432"
