@@ -5,6 +5,7 @@ import random
 import math 
 from db_manager import get_user , create_user , save_score , close_db , get_user_score_data 
 
+
 pygame.init()
 
 width , height = 500 , 500 
